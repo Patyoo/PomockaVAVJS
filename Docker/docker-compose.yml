@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  dev:
+    container_name: zadanie_2
+    build: .
+    ports:
+      - 8080:8080
+
+
