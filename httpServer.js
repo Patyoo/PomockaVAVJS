@@ -7,8 +7,9 @@ const server = http.createServer((req, res) => {
     const chunks = [];
     req.on('data', (chunk) => chunks.push(chunk));
     req.on('end', () => {
-      const data = Buffer.concat(chunks);
-      res.end(JSON.stringify({ result: add(parseInt(JSON.parse(data).result), 1) }));
+      const data = JSON.parse(chunks.join(''));
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify({ result: data.result + 1 }));
     });
   } else {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
