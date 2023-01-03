@@ -1,10 +1,10 @@
 someAsyncFunction = (boolean) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (boolean) {
+      try {
         resolve(true);
-      } else {
-        reject(false);
+      } catch (error) {
+        reject(error);
       }
     }, 1000);
   });
